@@ -1,0 +1,25 @@
+{
+  "name": "jest-github-actions",
+  "version": "0.1.0",
+  "description": "Jest reporter for GitHub Actions annotations",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --reporters=default --reporters=./index.js"
+  },
+  "author": "Visnu Pitiyanuvath <visnup@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.2.3"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/visnup/jest-github-actions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/visnup/jest-github-actions/issues"
+  },
+  "homepage": "https://github.com/visnup/jest-github-actions#readme"
+}
