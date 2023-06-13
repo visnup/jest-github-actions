@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-const {issueCommand} = require("@actions/core/lib/command");
+import { issueCommand } from "@actions/core/lib/command.js";
 
 const cwd = new RegExp(process.cwd() + "/", "g");
 const regex = /^    at .*?\(?([^\s:]+):(\d+):(\d+)\)?$/;
-class GitHubActionsReporter {
-  onTestResult(_test, {testResults}) {
-    for (const {failureMessages, fullName, status} of testResults) {
+export default class GitHubActionsReporter {
+  onTestResult(_test, { testResults }) {
+    for (const { failureMessages, fullName, status } of testResults) {
       if (status !== "failed") continue;
       for (const message of failureMessages) {
         const local = message.replace(cwd, "");
@@ -17,10 +17,8 @@ class GitHubActionsReporter {
         )
           match = stack.shift().match(regex);
         const [, file, line, col] = match;
-        issueCommand("error", {file, line, col}, `${fullName}\n\n${local}`);
+        issueCommand("error", { file, line, col }, `${fullName}\n\n${local}`);
       }
     }
   }
 }
-
-module.exports = GitHubActionsReporter;
