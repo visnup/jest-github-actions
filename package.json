@@ -1,6 +1,6 @@
 {
   "name": "jest-github-actions",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Jest reporter for GitHub Actions annotations",
   "main": "index.js",
   "scripts": {
